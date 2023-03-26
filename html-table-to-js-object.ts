@@ -1,13 +1,13 @@
-//This function convert a HTML Table to a JavaScript Object using Playwright and TypeScript
+//This function convert an HTML Table to a JavaScript Object using Playwright and TypeScript
 
 async function HTMLTableToObjectParser(table: Locator) {
     let rowsCount = await table.locator("tr").count();
-    let headers = await table.locator("th").allInnerTexts();
+    let headers = await table.locator("th").textContent();
     let rows = [];
     let rowData = {};
     let data = [];
     for(let i=1;i<rowsCount;i++){
-      rows.push(await table.locator("tr").nth(i).locator("td").allInnerTexts());
+      rows.push(await table.locator("tr").nth(i).locator("td").textContent());
     }
 
     for(let i=0;i<rows.length;i++){
