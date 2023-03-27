@@ -2,12 +2,12 @@
 
 async function HTMLTableToObjectParser(table: Locator) {
     let rowsCount = await table.locator("tr").count();
-    let headers = await table.locator("th").textContent();
+    let headers = await table.locator("th").allTextContents();
     let rows = [];
     let rowData = {};
     let data = [];
     for(let i=1;i<rowsCount;i++){
-      rows.push(await table.locator("tr").nth(i).locator("td").textContent());
+      rows.push(await table.locator("tr").nth(i).locator("td").allTextContents());
     }
 
     for(let i=0;i<rows.length;i++){
